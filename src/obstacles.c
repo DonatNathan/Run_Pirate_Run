@@ -35,8 +35,8 @@ sfSprite *do_sprite(sfTexture *texture, sfVector2f position)
     return (sprite2);
 }
 
-cible *change_sprite(cible *my_cible, sfTexture *texture, sfVector2f position, \
-                     map *my_map)
+cible *change_sprite(cible *my_cible, sfTexture *texture, sfVector2f position,
+map *my_map)
 {
     sfSprite *sprite2 = do_sprite(texture, position);
 
@@ -67,18 +67,19 @@ map *refresh_sprite(map *my_map, char *map)
     sfVector2f pos_s3 = sfSprite_getPosition(my_map->s3->sprite);
     sfVector2f pos_s4 = sfSprite_getPosition(my_map->s4->sprite);
 
-    if (pos_s1.x <= - 100)
+    if (pos_s1.x <= -100)
         my_map->s1 = walk_in_map(my_map, map, my_map->s1);
-    if (pos_s2.x <= - 100)
+    if (pos_s2.x <= -100)
         my_map->s2 = walk_in_map(my_map, map, my_map->s2);
-    if (pos_s3.x <= - 100)
+    if (pos_s3.x <= -100)
         my_map->s3 = walk_in_map(my_map, map, my_map->s3);
-    if (pos_s4.x <= - 100)
+    if (pos_s4.x <= -100)
         my_map->s4 = walk_in_map(my_map, map, my_map->s4);
     return (my_map);
 }
 
-void check_colision(game *my_game, s_pause *my_pause, map *my_map, runner *my_pirate)
+void check_colision(game *my_game, s_pause *my_pause, map *my_map,
+runner *my_pirate)
 {
     sfVector2f pos_s1 = sfSprite_getPosition(my_map->s1->sprite);
     sfVector2f pos_s2 = sfSprite_getPosition(my_map->s2->sprite);

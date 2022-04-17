@@ -10,7 +10,7 @@
 #include "../includes/structs.h"
 
 void update_play(parallax *my_back, game *my_game, s_pause *my_pause, \
-                 runner *my_pirate)
+runner *my_pirate)
 {
     update_game(my_game);
     my_pause->score += 1;

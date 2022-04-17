@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 game *create_game(sfRenderWindow *window, sfEvent event, \
-                  s_pause *my_pause)
+s_pause *my_pause)
 {
     game *my_game = malloc(sizeof(game));
 
@@ -70,7 +70,7 @@ endgame *create_text2(s_pause *my_pause, int win, endgame *my_end)
     sfText_setFont(my_end->quit, font_button);
     sfText_setFont(my_end->restart, font_button);
     sfText_setFont(my_end->result, font_text);
-    sfText_setString(my_end->score, new_put_nbr_str(my_pause->score));
+    sfText_setString(my_end->score, my_itoa(my_pause->score));
     sfText_setString(my_end->quit, "QUIT (Q)");
     sfText_setString(my_end->restart, "RESTART (R)");
     if (win == 0)

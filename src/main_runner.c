@@ -47,7 +47,7 @@ void open_menu(sfRenderWindow *window, int life, int play_music)
 
     my_game->life = life;
     my_pause->life = life;
-    sfMouse_setPosition(mouse_start, (sfWindow *) window);
+    sfMouse_setPosition(mouse_start, (sfWindow *)window);
     my_menu = create_title(my_menu);
     sfSound_setLoop(my_sounds->ambiance, sfTrue);
     if (play_music == 1)
@@ -64,7 +64,7 @@ void create_window(char *username)
 {
     sfVideoMode mode = {1920, 1080, 64};
     sfRenderWindow *window = sfRenderWindow_create(mode, "My Runner", \
-                                                   sfResize | sfClose, NULL);
+    sfResize | sfClose, NULL);
     int life;
 
     if (username[0] == 'J' && username[1] == 'e' && username[2] == 's' && \

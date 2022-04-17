@@ -20,8 +20,8 @@ void draw_menu(game_menu *my_menu, sfRenderWindow *window)
     sfRenderWindow_drawText(window, my_menu->my_runner, sfFalse);
 }
 
-game_menu *create_text(game_menu *my_menu, sfVector2f position_p, \
-                       sfVector2f position_q)
+game_menu *create_text(game_menu *my_menu, sfVector2f position_p,
+sfVector2f position_q)
 {
     sfFont *font = sfFont_createFromFile("pics/rockstar.otf");
     sfVector2f scale = {3, 3};

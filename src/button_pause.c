@@ -65,18 +65,19 @@ s_pause *remove_pause(s_pause *my_pause, int *ptr_pause)
 }
 
 s_pause *select_button(s_pause *my_pause, sfVector2i mouse_position, \
-                     int *ptr_pause, game *my_game)
+int *ptr_pause, game *my_game)
 {
     if (mouse_position.x > my_pause->pos_continu.x && mouse_position.x <= \
-(my_pause->pos_continu.x + 460) && mouse_position.y > my_pause->pos_continu.y \
-        && mouse_position.y <= (my_pause->pos_continu.y + 130)) {
+    (my_pause->pos_continu.x + 460) && mouse_position.y >
+    my_pause->pos_continu.y && mouse_position.y <=
+    (my_pause->pos_continu.y + 130)) {
         my_pause->color_c = sfWhite;
         if (my_game->event.type == sfEvtMouseButtonReleased)
             my_pause = remove_pause(my_pause, ptr_pause);
     } else if (mouse_position.x > my_pause->pos_restart.x && mouse_position.x \
-<= (my_pause->pos_restart.x + 460) && mouse_position.y > \
-my_pause->pos_restart.y && mouse_position.y <= \
-             (my_pause->pos_restart.y + 130)) {
+    <= (my_pause->pos_restart.x + 460) && mouse_position.y > \
+    my_pause->pos_restart.y && mouse_position.y <= \
+    (my_pause->pos_restart.y + 130)) {
         my_pause->color_r = sfWhite;
         if (my_game->event.type == sfEvtMouseButtonReleased)
             play_game(my_pause, my_game, my_game->my_s);
@@ -89,17 +90,17 @@ my_pause->pos_restart.y && mouse_position.y <= \
 }
 
 s_pause *color_buttons(s_pause *my_pause, sfVector2i mouse_position, \
-                     int *ptr_pause, game *my_game)
+int *ptr_pause, game *my_game)
 {
     if ((mouse_position.x > my_pause->pos_quit.x && mouse_position.x <= \
 (my_pause->pos_quit.x + 460) && mouse_position.y > my_pause->pos_quit.y && \
 mouse_position.y <= (my_pause->pos_quit.y + 130)) || (mouse_position.x > \
-my_pause->pos_restart.x && mouse_position.x <= (my_pause->pos_restart.x + 460)\
+my_pause->pos_restart.x && mouse_position.x <= (my_pause->pos_restart.x + 460)
 && mouse_position.y > my_pause->pos_restart.y && mouse_position.y <= \
 (my_pause->pos_restart.y + 130)) || (mouse_position.x > \
-my_pause->pos_continu.x && mouse_position.x <= (my_pause->pos_continu.x + 460) \
+my_pause->pos_continu.x && mouse_position.x <= (my_pause->pos_continu.x + 460)
 && mouse_position.y > my_pause->pos_continu.y && mouse_position.y <= \
-                                     (my_pause->pos_continu.y + 130)))
+(my_pause->pos_continu.y + 130)))
         my_pause = select_button(my_pause, mouse_position, ptr_pause, my_game);
     else {
         my_pause->color_c = sfBlack;

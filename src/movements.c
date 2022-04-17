@@ -15,14 +15,13 @@ void test_action(runner *my_pirate, game *my_game)
 {
     sfVector2f attack = {1, 0};
     sfVector2f attack2 = {-1, 0};
-    
+
     if (my_game->action == 1) {
         if (my_pirate->jump.y < 24) {
             my_pirate->jump.y += 1;
             sfSprite_move(my_pirate->s_runner, my_pirate->jump);
         }
-    }
-    else if (my_game->action == 2) {
+    } else if (my_game->action == 2) {
         if (my_game->secs <= 100)
             sfSprite_move(my_pirate->s_runner, attack);
         else

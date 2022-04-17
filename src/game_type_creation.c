@@ -70,7 +70,7 @@ choices *create_choices(void)
 }
 
 void change_level(game *my_game, choices *my_choices, sfVector2i mouse_pos, \
-                  s_pause *my_pause)
+s_pause *my_pause)
 {
     if (mouse_pos.x > my_choices->pos_button1.x && mouse_pos.x < (my_choices->pos_button1.x + 470) && mouse_pos.y > my_choices->pos_button1.y && mouse_pos.y < (my_choices->pos_button1.y + 200)) {
         my_choices->color_button1 = sfWhite;
@@ -85,7 +85,7 @@ void change_level(game *my_game, choices *my_choices, sfVector2i mouse_pos, \
         if (my_game->event.type == sfEvtMouseButtonReleased) {
             my_game->level = 2;
             play_game(my_pause, my_game, my_game->my_s);
-	}
+        }
     } else {
         my_choices->color_button1 = sfBlack;
         my_choices->color_button2 = sfBlack;

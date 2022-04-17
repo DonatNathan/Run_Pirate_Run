@@ -28,7 +28,8 @@ sfIntRect move_rect(sfIntRect rect, int offset, int max_value)
     return (rect);
 }
 
-sfIntRect create_clock(sfIntRect rect, int offset, int max_value, game *my_game)
+sfIntRect create_clock(sfIntRect rect, int offset, int max_value,
+game *my_game)
 {
     if (my_game->secs > my_game->cmpt_move) {
         rect = move_rect(rect, offset, max_value);
@@ -44,18 +45,24 @@ sfIntRect create_clock(sfIntRect rect, int offset, int max_value, game *my_game)
 void set_texture(runner *my_pirate, game *my_game)
 {
     if (my_game->pirate == 1) {
-        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/1/run.png", NULL);
-        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/1/jump.png", NULL);
+        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/1/run.png",
+        NULL);
+        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/1/jump.png",
+        NULL);
         my_pirate->t_a = sfTexture_createFromFile\
             ("pics/pirate/1/attack.png", NULL);
     } else if (my_game->pirate == 2) {
-        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/2/run.png", NULL);
-        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/2/jump.png", NULL);
+        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/2/run.png",
+        NULL);
+        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/2/jump.png",
+        NULL);
         my_pirate->t_a = sfTexture_createFromFile\
             ("pics/pirate/2/attack.png", NULL);
     } else {
-        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/3/run.png", NULL);
-        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/3/jump.png", NULL);
+        my_pirate->t_r = sfTexture_createFromFile("pics/pirate/3/run.png",
+        NULL);
+        my_pirate->t_j = sfTexture_createFromFile("pics/pirate/3/jump.png",
+        NULL);
         my_pirate->t_a = sfTexture_createFromFile\
             ("pics/pirate/3/attack.png", NULL);
     }

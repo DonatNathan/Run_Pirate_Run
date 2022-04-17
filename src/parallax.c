@@ -68,7 +68,7 @@ sfText *create_score(void)
 void draw_score(sfText *my_score, sfRenderWindow *window, int score, \
                 s_pause *my_pause)
 {
-    sfText_setString(my_score, new_put_nbr_str(score));
+    sfText_setString(my_score, my_itoa(score));
     sfRenderWindow_drawText(window, my_score, sfFalse);
     sfRenderWindow_drawSprite(window, my_pause->pause_button, sfFalse);
 }

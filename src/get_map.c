@@ -17,12 +17,15 @@
 char *get_map(map *my_map)
 {
     char buffer[541];
+    struct stat st;
     int file_desc = open("map", O_RDONLY);
-    char *map = malloc(sizeof(char) * 1000);
+    char *map;
     int size;
 
-    read(file_desc, buffer, 540);
-    for (int cmpt = 0; cmpt != my_strlen(buffer); cmpt += 1)
+    stat("map", &st);
+    map = malloc(sizeof(char) * st.st_size);
+    read(file_desc, buffer, st.st_size);
+    for (int cmpt = 0; cmpt < st.st_size; cmpt += 1)
         map[cmpt] = buffer[cmpt];
     for (size = 0; buffer[size] != '\n'; size += 1);
     my_map->size = size + 1;
@@ -49,10 +52,10 @@ cible *walk_in_map(map *my_map, char *map, cible *my_cible)
     int obstacle_finded = 1;
     int *is_finded = &obstacle_finded;
 
-    for ( ; my_map->cmpt_x < my_map->size && obstacle_finded == 1; \
-          my_map->cmpt_x += 1) {
+    for (; my_map->cmpt_x < my_map->size && obstacle_finded == 1; \
+    my_map->cmpt_x += 1) {
         for (my_map->cmpt_y = 0; my_map->cmpt_y < 4 && obstacle_finded == 1; \
-             my_map->cmpt_y += 1) {
+        my_map->cmpt_y += 1) {
             my_cible = check_map(my_map, map, my_cible, is_finded);
         }
     }

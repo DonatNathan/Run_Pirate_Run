@@ -48,10 +48,11 @@ s_pause *create_pause(game_menu *my_menu)
     return (my_pause);
 }
 
-void check_event_pause(game *my_game, s_pause *my_pause, int *ptr_pause, int time)
+void check_event_pause(game *my_game, s_pause *my_pause, int *ptr_pause,
+int time)
 {
     sfVector2i mouse_position = sfMouse_getPosition((sfWindow *) \
-                                                    my_game->window);
+    my_game->window);
 
     while (sfRenderWindow_pollEvent(my_game->window, &my_game->event)) {
         if (my_game->event.type == sfEvtClosed)
@@ -59,7 +60,7 @@ void check_event_pause(game *my_game, s_pause *my_pause, int *ptr_pause, int tim
         if ((mouse_position.x > 1270 && mouse_position.x <= 1330 && \
 mouse_position.y > 270 && mouse_position.y <= 320 && my_game->event.type == \
 sfEvtMouseButtonReleased) || (mouse_position.x > 1800 && mouse_position.x <= \
-1890 && mouse_position.y > 20 && mouse_position.y <= 110 && my_game->event.type\
+1890 && mouse_position.y > 20 && mouse_position.y <= 110 && my_game->event.type
 == sfEvtMouseButtonReleased) || sfKeyboard_isKeyPressed(sfKeyC) || \
             (sfKeyboard_isKeyPressed(sfKeyEscape) && time != 0))
             my_pause = remove_pause(my_pause, ptr_pause);
@@ -90,11 +91,11 @@ void pause_menu(game *my_game, s_pause *my_pause)
     int in_pause = 0;
     int *ptr_pause = &in_pause;
     sfVector2f pos_c = {my_pause->pos_continu.x + 80, \
-        my_pause->pos_continu.y + 30};
-    sfVector2f pos_r = {my_pause->pos_restart.x + 90, \
-        my_pause->pos_restart.y + 30};
-    sfVector2f pos_q = {my_pause->pos_quit.x + 142, \
-        my_pause->pos_quit.y + 30};
+    my_pause->pos_continu.y + 30};
+    sfVector2f pos_r = (sfVector2f){my_pause->pos_restart.x + 90, \
+    my_pause->pos_restart.y + 30};
+    sfVector2f pos_q = (sfVector2f){my_pause->pos_quit.x + 142, \
+    my_pause->pos_quit.y + 30};
     sfVector2i mouse_pause = {1300, 290};
     int time = 0;
 

@@ -10,7 +10,7 @@
 
     #include <SFML/Audio.h>
 
-struct sounds {
+typedef struct sounds {
     sfSoundBuffer *music;
     sfSound *ambiance;
     sfSoundBuffer *m_jump;
@@ -21,10 +21,9 @@ struct sounds {
     sfSound *win;
     sfSoundBuffer *m_lose;
     sfSound *lose;
-};
-typedef struct sounds sounds;
+} sounds;
 
-struct choices {
+typedef struct choices {
     sfTexture *t_black;
     sfTexture *t_white;
     sfTexture *t_woman;
@@ -49,10 +48,9 @@ struct choices {
     sfText *selection;
     sfVector2f pos_selection;
     sfFont *font;
-};
-typedef struct choices choices;
+} choices;
 
-struct game {
+typedef struct game {
     sfRenderWindow *window;
     sfEvent event;
     sfClock *clock;
@@ -65,18 +63,16 @@ struct game {
     int pirate;
     int life;
     sounds *my_s;
-};
-typedef struct game game;
+} game;
 
-struct game_object {
+typedef struct game_object {
     sfSprite *sprite;
     sfTexture *texture;
     sfVector2f position;
     sfIntRect rect;
-};
-typedef struct game_object game_object;
+} game_object;
 
-struct game_menu {
+typedef struct game_menu {
     sfSprite *background;
     sfTexture *t_background;
     sfSprite *button_p;
@@ -90,10 +86,9 @@ struct game_menu {
     sfColor color_p;
     sfColor color_q;
     int life;
-};
-typedef struct game_menu game_menu;
+} game_menu;
 
-struct parallax {
+typedef struct parallax {
     sfSprite *sky;
     sfSprite *cloud;
     sfSprite *sea;
@@ -102,10 +97,9 @@ struct parallax {
     int s_cloud;
     int s_sea;
     int s_land;
-};
-typedef struct parallax parallax;
+} parallax;
 
-struct s_pause {
+typedef struct s_pause {
     sfTexture *t_menu;
     sfTexture *t_button;
     sfSprite *my_menu;
@@ -128,10 +122,9 @@ struct s_pause {
     int type_button;
     int score;
     int life;
-};
-typedef struct s_pause s_pause;
+} s_pause;
 
-struct runner {
+typedef struct runner {
     sfTexture *t_r;
     sfTexture *t_j;
     sfTexture *t_a;
@@ -139,17 +132,15 @@ struct runner {
     sfVector2f position;
     sfIntRect rect;
     sfVector2f jump;
-};
-typedef struct runner runner;
+} runner;
 
-struct cible {
+typedef struct cible {
     sfSprite *sprite;
     sfVector2f speed;
     int type;
-};
-typedef	struct cible cible;
+} cible;
 
-struct map {
+typedef struct map {
     cible *s1;
     cible *s2;
     cible *s3;
@@ -172,10 +163,9 @@ struct map {
     int num;
     int size;
     char *map;
-};
-typedef struct map map;
+} map;
 
-struct endgame {
+typedef struct endgame {
     sfText *score;
     sfText *quit;
     sfText *restart;
@@ -185,8 +175,7 @@ struct endgame {
     sfText *result;
     sfTexture *button;
     sfTexture *back;
-};
-typedef struct endgame endgame;
+} endgame;
 
 game_menu *create_title(game_menu *my_menu);
 game_menu *color_button(game_menu *my_menu, sfVector2i mouse_position);
@@ -199,13 +188,13 @@ void draw_parallax(parallax *my_back, sfRenderWindow *window);
 sfSprite *create_object(char *pathname);
 sfText *create_score(void);
 void draw_score(sfText *my_score, sfRenderWindow *window, int score, \
-                s_pause *my_pause);
+s_pause *my_pause);
 void pause_menu(game *my_game, s_pause *my_pause);
 s_pause *create_buttons(s_pause *my_pause, sfVector2f scale);
 s_pause *create_texts(s_pause *my_pause, sfVector2f pos_c, sfVector2f pos_r, \
-                      sfVector2f pos_q);
+sfVector2f pos_q);
 s_pause *color_buttons(s_pause *my_pause, sfVector2i mouse_position, \
-                       int *ptr_pause, game *my_game);
+int *ptr_pause, game *my_game);
 void open_menu(sfRenderWindow *window, int life, int play_music);
 s_pause *create_pause(game_menu *my_menu);
 s_pause *create_button_p(s_pause *my_pause);
@@ -213,40 +202,40 @@ s_pause *change_button(s_pause *my_pause);
 s_pause *remove_pause(s_pause *my_pause, int *ptr_pause);
 runner *create_user(game *my_game);
 sfIntRect create_clock(sfIntRect rect, int offset, int max_value, \
-                       game *my_game);
+game *my_game);
 game *jump(runner *my_pirate, game *my_game);
 game *attack(runner *my_pirate, game *my_game, map *my_map);
-game *run(runner* my_pirate, game *my_game);
+game *run(runner *my_pirate, game *my_game);
 void test_action(runner *my_pirate, game *my_game);
 game *create_game(sfRenderWindow *window, sfEvent event, \
-                  s_pause *my_pause);
+s_pause *my_pause);
 void update_game(game *my_game);
 void check_position(parallax *my_back, sfRenderWindow *window);
 choices *create_choices(void);
 void choose_lvl_skin(game *my_game, s_pause *my_pause, sounds *my_sounds);
 sfIntRect change_rect(sfIntRect rect);
 void change_level(game *my_game, choices *my_choices, sfVector2i mouse_pos, \
-                  s_pause *my_pause);
+s_pause *my_pause);
 char *get_map(map *my_map);
-map *create_map();
+map *create_map(void);
 void draw_map(game *my_game, map *my_map);
 sounds *create_sounds(void);
 void check_colision(game *my_game, s_pause *my_pause, map *my_map, \
-                    runner *my_pirate);
+runner *my_pirate);
 void game_stop(game *my_game, s_pause *my_pause, int win);
 void create_select(choices *my_choices);
 void draw_end(game *my_game, endgame *my_end);
 endgame *create_text2(s_pause *my_pause, int win, endgame *my_end);
 endgame *create_text3(endgame *my_end);
 cible *change_sprite(cible *my_cible, sfTexture *texture, \
-                     sfVector2f position, map *my_map);
+sfVector2f position, map *my_map);
 cible *walk_in_map(map *my_map, char *map, cible *my_cible);
 map *refresh_sprite(map *my_map, char *map);
 map *create_enemy(map *my_map);
 cible *check_sprite(int pos, cible *my_cible, struct map *my_map, \
-                    sfVector2f position);
+sfVector2f position);
 void destroy_enemy(runner *my_pirate, game *my_game, map *my_map);
 void update_play(parallax *my_back, game *my_game, \
-                 s_pause *my_pause, runner *my_pirate);
+s_pause *my_pause, runner *my_pirate);
 
 #endif /* MAIN_RUNNER_H_ */

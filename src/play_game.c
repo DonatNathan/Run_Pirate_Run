@@ -52,10 +52,10 @@ s_pause *create_button_p(s_pause *my_pause)
 }
 
 game *check_event_game(game *my_game, s_pause *my_pause, runner *my_pirate, \
-                       map *my_map)
+map *my_map)
 {
     sfVector2i mouse_position = sfMouse_getPosition((sfWindow *) \
-                                                    my_game->window);
+    my_game->window);
 
     while (sfRenderWindow_pollEvent(my_game->window, &my_game->event)) {
         if (my_game->event.type == sfEvtClosed)

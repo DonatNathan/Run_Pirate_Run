@@ -37,35 +37,44 @@ void create_select(choices *my_choices)
 
 choices *skin_choice(game *my_game, choices *my_choices, sfVector2i mouse_pos)
 {
-    if (mouse_pos.x > my_choices->pos_black.x && mouse_pos.x < (my_choices->pos_black.x + 165) && mouse_pos.y > my_choices->pos_black.y && mouse_pos.y < (my_choices->pos_black.y + 165)) {
+    if (mouse_pos.x > my_choices->pos_black.x && mouse_pos.x <
+    (my_choices->pos_black.x + 165) && mouse_pos.y > my_choices->pos_black.y
+    && mouse_pos.y < (my_choices->pos_black.y + 165)) {
         if (my_game->event.type == sfEvtMouseButtonReleased) {
             my_game->pirate = 3;
             my_choices->pos_selection.x = 580;
-            sfText_setPosition(my_choices->selection, my_choices->pos_selection);
+            sfText_setPosition(my_choices->selection,
+            my_choices->pos_selection);
         }
     }
-    if (mouse_pos.x > my_choices->pos_woman.x && mouse_pos.x < (my_choices->pos_woman.x + 165) && mouse_pos.y > my_choices->pos_woman.y && mouse_pos.y < (my_choices->pos_woman.y + 165)) {
+    if (mouse_pos.x > my_choices->pos_woman.x && mouse_pos.x <
+    (my_choices->pos_woman.x + 165) && mouse_pos.y > my_choices->pos_woman.y
+    && mouse_pos.y < (my_choices->pos_woman.y + 165)) {
         if (my_game->event.type == sfEvtMouseButtonReleased) {
             my_game->pirate = 2;
             my_choices->pos_selection.x	= 1280;
-            sfText_setPosition(my_choices->selection, my_choices->pos_selection);
-	}
+            sfText_setPosition(my_choices->selection,
+            my_choices->pos_selection);
+        }
     }
-    if (mouse_pos.x > my_choices->pos_white.x && mouse_pos.x < (my_choices->pos_white.x + 165) && mouse_pos.y > my_choices->pos_white.y && mouse_pos.y < (my_choices->pos_white.y + 165)) {
+    if (mouse_pos.x > my_choices->pos_white.x && mouse_pos.x <
+    (my_choices->pos_white.x + 165) && mouse_pos.y > my_choices->pos_white.y
+    && mouse_pos.y < (my_choices->pos_white.y + 165)) {
         if (my_game->event.type == sfEvtMouseButtonReleased) {
             my_game->pirate = 1;
             my_choices->pos_selection.x	= 930;
-            sfText_setPosition(my_choices->selection, my_choices->pos_selection);
-	}
+            sfText_setPosition(my_choices->selection,
+            my_choices->pos_selection);
+        }
     }
     return (my_choices);
 }
 
 void check_event_choices(s_pause *my_pause, game *my_game, \
-                         choices *my_choices, sounds *my_sounds)
+choices *my_choices, sounds *my_sounds)
 {
     sfVector2i mouse_pos = sfMouse_getPosition((sfWindow *) \
-                                                    my_game->window);
+    my_game->window);
 
     while (sfRenderWindow_pollEvent(my_game->window, &my_game->event)) {
         if (sfKeyboard_isKeyPressed(sfKeyNum1)) {

@@ -45,21 +45,22 @@ endgame *create_end(s_pause *my_pause, int win)
 }
 
 endgame *check_mouse(endgame *my_end, game *my_game, sounds *my_sounds, \
-                     s_pause *my_pause)
+s_pause *my_pause)
 {
-    sfVector2i mouse_position = sfMouse_getPosition((sfWindow *) my_game->window);
+    sfVector2i mouse_position =
+    sfMouse_getPosition((sfWindow *)my_game->window);
     sfVector2f pos_quit = sfSprite_getPosition(my_end->s_quit);
     sfVector2f pos_restart = sfSprite_getPosition(my_end->s_restart);
 
     if (mouse_position.x > pos_quit.x && mouse_position.x < \
-pos_quit.x + 460 && mouse_position.y > pos_quit.y \
-        && mouse_position.y < pos_quit.y + 190) {
+    pos_quit.x + 460 && mouse_position.y > pos_quit.y \
+    && mouse_position.y < pos_quit.y + 190) {
         sfText_setColor(my_end->quit, sfWhite);
         if (my_game->event.type == sfEvtMouseButtonReleased)
             sfRenderWindow_close(my_game->window);
-    } else if (mouse_position.x > pos_restart.x && mouse_position.x <    \
-pos_restart.x + 460 && mouse_position.y > pos_restart.y \
-               && mouse_position.y < pos_restart.y + 190) {
+    } else if (mouse_position.x > pos_restart.x && mouse_position.x <
+    pos_restart.x + 460 && mouse_position.y > pos_restart.y \
+    && mouse_position.y < pos_restart.y + 190) {
         sfText_setColor(my_end->restart, sfWhite);
         if (my_game->event.type == sfEvtMouseButtonReleased)
             play_game(my_pause, my_game, my_sounds);
@@ -71,7 +72,7 @@ pos_restart.x + 460 && mouse_position.y > pos_restart.y \
 }
 
 endgame *check_end(endgame *my_end, game *my_game, s_pause *my_pause, \
-                   sounds *my_sounds)
+sounds *my_sounds)
 {
     while (sfRenderWindow_pollEvent(my_game->window, &my_game->event)) {
         if (my_game->event.type == sfEvtClosed)

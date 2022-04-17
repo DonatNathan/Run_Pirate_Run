@@ -43,7 +43,7 @@ my_menu->pose_button_p.x + 460 && mouse_position.y > my_menu->pose_button_p.y \
     } else if (mouse_position.x > my_menu->pose_button_q.x && \
 mouse_position.x < my_menu->pose_button_q.x + 460 && mouse_position.y > \
 my_menu->pose_button_q.y && mouse_position.y < \
-               my_menu->pose_button_q.y + 190) {
+my_menu->pose_button_q.y + 190) {
         my_menu->color_q = sfWhite;
         sfText_setColor(my_menu->quit, my_menu->color_q);
     } else {
@@ -56,7 +56,7 @@ my_menu->pose_button_q.y && mouse_position.y < \
 }
 
 cible *check_sprite(int pos, cible *my_cible, struct map *my_map, \
-                     sfVector2f position)
+sfVector2f position)
 {
     if (my_map->map[pos] == '1') {
         my_map->num = 1;
@@ -71,7 +71,7 @@ cible *check_sprite(int pos, cible *my_cible, struct map *my_map, \
         my_map->num = 4;
         my_cible = change_sprite(my_cible, my_map->enemy, position, my_map);
     } if (my_map->map[pos] == '5') {
-        position.y = - 100;
+        position.y = -100;
         my_map->num = 5;
         my_cible = change_sprite(my_cible, my_map->ship, position, my_map);
     }
